@@ -23,14 +23,26 @@ public class ParkingLot {
     @Setter
     private PricingStrategy pricingStrategy;
 
+    /**
+     * Creates a new ParkingLot instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     private ParkingLot() {
         this.pricingStrategy = PricingStrategyFactory.get(PricingStrategyType.TIME_BASED);
     }
 
+    /**
+     * Handles get instance for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static ParkingLot getInstance() {
         return INSTANCE;
     }
 
+    /**
+     * Handles add floor for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addFloor(ParkingFloor floor) {
         floors.put(floor.getId(), floor);
     }
@@ -38,6 +50,10 @@ public class ParkingLot {
     // b1, b2 (one spot)
     // car, bike
 
+    /**
+     * Handles park vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Ticket parkVehicle(Vehicle vehicle, LocalDateTime entryTime) {
         for (ParkingFloor floor : floors.values()) {
             ParkingSpot spot = floor.findAvailableSpot(vehicle.getType());
@@ -63,6 +79,10 @@ public class ParkingLot {
         return null;
     }
 
+    /**
+     * Handles unpark vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void unparkVehicle(String ticketId, LocalDateTime exitTime, PaymentMode paymentMode) {
         Ticket ticket = activeTickets.get(ticketId);
         if (ticket == null) {
@@ -91,6 +111,10 @@ public class ParkingLot {
         System.out.println("Vehicle exited. Fee charged: ₹" + fee);
     }
 
+    /**
+     * Handles print status for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void printStatus() {
         floors.forEach((floorId, floor) -> {
             System.out.println("Floor: " + floorId);

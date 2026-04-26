@@ -14,6 +14,10 @@ public class EventBasedPricing implements PricingStrategy {
             VehicleType.TRUCK, 70.0);
 
     @Override
+    /**
+     * Handles calculate fee for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public double calculateFee(VehicleType type, LocalDateTime entryTime, LocalDateTime exitTime) {
         long durationMinutes = Duration.between(entryTime, exitTime).toMinutes();
         long hours = (long) Math.ceil(durationMinutes / 60.0); // always round up to next hour

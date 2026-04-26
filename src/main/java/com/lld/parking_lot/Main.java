@@ -10,6 +10,10 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         ParkingLot lot = ParkingLot.getInstance();
         EntryGate entryGate = new EntryGate("EG1");

@@ -20,6 +20,10 @@ public class BookingService {
     private final DoctorRepository doctorRepo;
     private final PatientRepository patientRepo;
 
+    /**
+     * Handles search for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<DoctorSlot> search(Specialization spec, SlotRankStrategy strategy) {
         List<Doctor> doctors = doctorRepo.findBySpecialization(spec);
         List<DoctorSlot> result = new ArrayList<>();
@@ -33,6 +37,10 @@ public class BookingService {
         return strategy.rank(result);
     }
 
+    /**
+     * Books the book for the caller.
+     * It checks availability, creates the booking, and updates the participating entities.
+     */
     public Booking book(UUID patientId, UUID doctorId, String slot) {
         Doctor doctor = doctorRepo.findById(doctorId);
         Map<String, Boolean> availability = doctor.getAvailability();
@@ -67,6 +75,10 @@ public class BookingService {
         }
     }
 
+    /**
+     * Handles cancel for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void cancel(UUID bookingId) {
         Booking booking = bookingRepo.getBookingById(bookingId);
         if (booking == null)
@@ -87,10 +99,18 @@ public class BookingService {
         }
     }
 
+    /**
+     * Handles view bookings by doctor for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Booking> viewBookingsByDoctor(UUID doctorId) {
         return bookingRepo.findByDoctor(doctorId);
     }
 
+    /**
+     * Handles view bookings by patient for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Booking> viewBookingsByPatient(UUID patientId) {
         return bookingRepo.findByPatient(patientId);
     }

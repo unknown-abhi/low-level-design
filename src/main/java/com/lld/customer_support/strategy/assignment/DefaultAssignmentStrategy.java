@@ -7,6 +7,10 @@ import java.util.List;
 
 public class DefaultAssignmentStrategy implements AssignmentStrategy {
     @Override
+    /**
+     * Assigns the assign to the appropriate target.
+     * It evaluates the current options and records the chosen assignment.
+     */
     public Agent assign(List<Agent> agents, Issue issue) {
         for (Agent agent : agents) {
             if (agent.isAvailable() && agent.getExpertise().contains(issue.getIssueType())) {

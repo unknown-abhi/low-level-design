@@ -12,11 +12,19 @@ public class FixedWindowRateLimiter extends RateLimiter {
     private final Map<String, Integer> requestCount = new ConcurrentHashMap<>();
     private final Map<String, Long> windowStart = new HashMap<>();
 
+    /**
+     * Creates a new FixedWindowRateLimiter instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public FixedWindowRateLimiter(RateLimitConfig config) {
         super(config, RateLimitType.FIXED_WINDOW);
     }
 
     @Override
+    /**
+     * Handles allow request for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean allowRequest(String userId) {
         AtomicBoolean allowed = new AtomicBoolean(false);
 

@@ -11,6 +11,10 @@ public class Board {
     private final int sideLength;
     private final Cell[][] grid;
 
+    /**
+     * Creates a new Board instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Board(int size) {
         this.size = size;
         this.sideLength = (int) Math.sqrt(size);
@@ -33,21 +37,37 @@ public class Board {
         }
     }
 
+    /**
+     * Handles get row for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private int getRow(int position) {
         int row = (position - 1) / sideLength;
         return sideLength - 1 - row;
     }
 
+    /**
+     * Handles get col for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private int getCol(int position) {
         int row = getRow(position);
         int col = (position - 1) % sideLength;
         return (row % 2 == 0) ? sideLength - 1 - col : col;
     }
 
+    /**
+     * Handles get cell for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private Cell getCell(int position) {
         return grid[getRow(position)][getCol(position)];
     }
 
+    /**
+     * Handles add obstacle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean addObstacle(Obstacle obstacle) {
         Cell srcCell = getCell(obstacle.getSrc());
         Cell destCell = getCell(obstacle.getDest());
@@ -60,6 +80,10 @@ public class Board {
         return true;
     }
 
+    /**
+     * Handles get new position for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public int getNewPosition(Player player, int offset) {
         int newPosition = player.getPosition() + offset;
 
@@ -82,6 +106,10 @@ public class Board {
         return finalPosition;
     }
 
+    /**
+     * Handles print board for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void printBoard(Queue<Player> players) {
         System.out.println("\nCurrent Board State:");
 

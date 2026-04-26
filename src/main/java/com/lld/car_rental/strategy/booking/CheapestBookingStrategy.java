@@ -11,6 +11,10 @@ public class CheapestBookingStrategy implements BookingStrategy {
     private final PricingStrategyType pricingType;
 
     @Override
+    /**
+     * Handles book vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Vehicle bookVehicle(List<Vehicle> vehicles) {
         // Sort vehicles by price based on pricingType (time or distance)
         List<Vehicle> sortedVehicles = vehicles.stream()

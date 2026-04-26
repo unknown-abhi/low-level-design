@@ -8,6 +8,10 @@ import java.util.List;
 
 public class BalanceSheetService {
 
+    /**
+     * Handles update balances for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void updateBalances(Group group, User paidBy, List<Split> splits) {
         double totalAmount = splits.stream().mapToDouble(Split::getAmount).sum();
         group.getBalanceSheet(paidBy).addTotalPaid(totalAmount);

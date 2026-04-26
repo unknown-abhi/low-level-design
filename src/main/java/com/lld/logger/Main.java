@@ -6,20 +6,24 @@ import com.lld.logger.enums.LogLevel;
 import com.lld.logger.formatter.PlainTextFormatter;
 
 public class Main {
+        /**
+         * Creates a new Main instance.
+         * This constructor wires the initial dependencies and starting state for the object.
+         */
         public static void main(String[] args) {
                 Logger logger = Logger.getInstance();
 
-                LogHandlerConfiguration.addAppenderForLevel(
-                                LogLevel.INFO,
-                                new ConsoleAppender(new PlainTextFormatter()));
+//                LogHandlerConfiguration.addAppenderForLevel(
+//                                LogLevel.INFO,
+//                                new ConsoleAppender(new PlainTextFormatter()));
 
                 LogHandlerConfiguration.addAppenderForLevel(
                                 LogLevel.ERROR,
                                 new ConsoleAppender(new PlainTextFormatter()));
 
-                LogHandlerConfiguration.addAppenderForLevel(
-                                LogLevel.ERROR,
-                                new FileAppender(new PlainTextFormatter(), "logs.txt"));
+//                LogHandlerConfiguration.addAppenderForLevel(
+//                                LogLevel.ERROR,
+//                                new FileAppender(new PlainTextFormatter(), "logs.txt"));
 
                 // Usage
                 logger.info("This is some key information"); // CONSOLE

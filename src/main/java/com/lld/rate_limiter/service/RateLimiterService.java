@@ -13,6 +13,10 @@ import java.util.Map;
 public class RateLimiterService {
     private final Map<UserTier, RateLimiter> rateLimiters = new HashMap<>();
 
+    /**
+     * Creates a new RateLimiterService instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public RateLimiterService() {
         // Configure per-tier limits + algorithms
         rateLimiters.put(
@@ -30,6 +34,10 @@ public class RateLimiterService {
                 ));
     }
 
+    /**
+     * Handles allow request for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean allowRequest(User user) {
         RateLimiter limiter = rateLimiters.get(user.getTier());
         if (limiter == null) {

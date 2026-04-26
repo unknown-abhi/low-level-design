@@ -10,6 +10,10 @@ public class FileAppender implements LogAppender {
     private final LogFormatter formatter;
     private final BufferedWriter writer;
 
+    /**
+     * Creates a new FileAppender instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public FileAppender(LogFormatter formatter, String fileName) {
         this.formatter = formatter;
 
@@ -22,6 +26,10 @@ public class FileAppender implements LogAppender {
 
     // t1, t2, t3,
     @Override
+    /**
+     * Handles append for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public synchronized void append(LogMessage message) {
         // t4, t5
 
@@ -39,6 +47,10 @@ public class FileAppender implements LogAppender {
     // blocking queue of cap = 3
     // 3 worker threads
 
+    /**
+     * Handles close for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public synchronized void close() {
         try {
             writer.close();

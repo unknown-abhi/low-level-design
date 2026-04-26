@@ -6,6 +6,10 @@ import java.util.List;
 
 public class LeastBookedVehicleStrategy implements BookingStrategy {
     @Override
+    /**
+     * Handles book vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Vehicle bookVehicle(List<Vehicle> vehicles) {
         List<Vehicle> sortedVehicles = vehicles.stream()
                 .sorted(Comparator.comparingInt(Vehicle::getBookingCount))

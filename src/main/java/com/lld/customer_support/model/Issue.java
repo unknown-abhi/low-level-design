@@ -20,6 +20,10 @@ public class Issue {
     private String resolution;
     private String assignedAgentId;
 
+    /**
+     * Creates a new Issue instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Issue(String transactionId, IssueType issueType, String subject, String description, String email) {
         this.id = "I" + UUID.randomUUID().toString().substring(0, 6);
         this.transactionId = transactionId;
@@ -31,6 +35,10 @@ public class Issue {
     }
 
     @Override
+    /**
+     * Handles to string for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public String toString() {
         return id + " {\"" + transactionId + "\", \"" + issueType + "\", \"" + subject + "\", \"" + description
                 + "\", \"" + email + "\", \"" + status + "\"}";

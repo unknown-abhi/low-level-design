@@ -8,10 +8,18 @@ public class PaymentProcessor {
 
     private final PaymentStrategy paymentStrategy;
 
+    /**
+     * Creates a new PaymentProcessor instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public PaymentProcessor(PaymentStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;
     }
 
+    /**
+     * Pays for the pay using the selected strategy.
+     * It delegates payment handling and updates the resulting status.
+     */
     public boolean pay(Booking booking) {
         boolean success = paymentStrategy.processPayment(booking);
 

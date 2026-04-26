@@ -17,6 +17,10 @@ public class GroupService {
     private final ExpenseService expenseService;
     private final DebtSimplificationService simplifier;
 
+    /**
+     * Handles create group for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public String createGroup(String name, List<User> members) {
         String id = UUID.randomUUID().toString();
         Group g = new Group(id, name);
@@ -26,10 +30,18 @@ public class GroupService {
         return id;
     }
 
+    /**
+     * Handles add member for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addMember(String groupId, User user) {
         get(groupId).addMember(user);
     }
 
+    /**
+     * Handles add expense for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addExpense(String groupId,
             String description, double amount,
             User paidBy, List<User> participants,
@@ -39,10 +51,18 @@ public class GroupService {
                 paidBy, participants, splitType, meta);
     }
 
+    /**
+     * Handles simplify debts for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void simplifyDebts(String groupId) {
         simplifier.simplifyDebts(get(groupId));
     }
 
+    /**
+     * Handles print balances for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void printBalances(String groupId) {
         Group g = get(groupId);
         g.getMembers().forEach(u -> {
@@ -71,6 +91,10 @@ public class GroupService {
         });
     }
 
+    /**
+     * Returns the get requested by the caller.
+     * It reads the current state and exposes the value without changing behavior.
+     */
     private Group get(String id) {
         return repo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found: " + id));

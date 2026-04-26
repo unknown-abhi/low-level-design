@@ -12,6 +12,10 @@ public class LogHandlerConfiguration {
     private static final LogHandler error = new ErrorHandler();
     private static final LogHandler fatal = new FatalHandler();
 
+    /**
+     * Builds the build for this flow.
+     * It assembles the required collaborators before returning the composed result.
+     */
     public static LogHandler build() {
         debug.setNext(info);
         info.setNext(warn);
@@ -21,6 +25,10 @@ public class LogHandlerConfiguration {
         return debug;
     }
 
+    /**
+     * Handles add appender for level for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static void addAppenderForLevel(LogLevel level, LogAppender appender) {
         switch (level) {
             case DEBUG -> debug.subscribe(appender);

@@ -11,6 +11,10 @@ public class PlainTextFormatter implements LogFormatter {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
+    /**
+     * Handles format for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public String format(LogMessage message) {
         String formattedTime = LocalDateTime.ofInstant(
                 Instant.ofEpochMilli(message.getTimestamp()),

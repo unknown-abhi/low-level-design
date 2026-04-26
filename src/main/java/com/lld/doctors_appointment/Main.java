@@ -18,6 +18,10 @@ import com.lld.doctors_appointment.strategy.StartTimeRankStrategy;
 import java.util.List;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         DoctorRepository doctorRepository = new DoctorRepository();
         PatientRepository patientRepository = new PatientRepository();

@@ -12,11 +12,19 @@ public class TimeBasedPricing implements PricingStrategy {
     private static final LocalTime PEAK_START = LocalTime.of(8, 0);
     private static final LocalTime PEAK_END = LocalTime.of(17, 0);
 
+    /**
+     * Handles is peak for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private boolean isPeak(LocalTime time) {
         return !time.isBefore(PEAK_START) && !time.isAfter(PEAK_END);
     }
 
     @Override
+    /**
+     * Handles calculate fee for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public double calculateFee(VehicleType type, LocalDateTime entryTime, LocalDateTime exitTime) {
         if (exitTime.isBefore(entryTime))
             throw new IllegalArgumentException("Exit time before entry time");

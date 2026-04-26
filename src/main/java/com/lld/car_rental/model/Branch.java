@@ -17,19 +17,35 @@ public class Branch {
 
     private Map<VehicleType, List<Vehicle>> vehicles = new HashMap<>();
 
+    /**
+     * Creates a new Branch instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Branch(String id, String city) {
         this.id = id;
         this.city = city;
     }
 
+    /**
+     * Handles get vehicles by type for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Vehicle> getVehiclesByType(VehicleType type) {
         return vehicles.getOrDefault(type, new ArrayList<>());
     }
 
+    /**
+     * Handles add vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addVehicle(Vehicle vehicle) {
         vehicles.computeIfAbsent(vehicle.getType(), k -> new ArrayList<>()).add(vehicle);
     }
 
+    /**
+     * Handles remove vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void removeVehicle(Vehicle vehicle) {
         List<Vehicle> list = vehicles.get(vehicle.getType());
         if (list != null)

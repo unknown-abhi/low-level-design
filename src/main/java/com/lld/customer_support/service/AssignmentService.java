@@ -17,6 +17,10 @@ public class AssignmentService {
     private final IssueRepository issueRepository;
     private final AssignmentStrategy strategy;
 
+    /**
+     * Handles assign issue for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void assignIssue(String issueId) {
         Issue issue = issueRepository.getById(issueId);
         if (issue == null)

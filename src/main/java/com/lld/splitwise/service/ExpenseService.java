@@ -12,6 +12,10 @@ import java.util.*;
 public class ExpenseService {
     private final BalanceSheetService balanceSheetService;
 
+    /**
+     * Handles add expense for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addExpense(Group group, String description, double amount, User paidBy,
             List<User> participants, SplitType splitType, Map<User, Double> metadata) {
 

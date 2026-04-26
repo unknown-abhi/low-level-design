@@ -20,6 +20,10 @@ public class Game {
     private final Queue<Player> players;
     private final Dice dice;
 
+    /**
+     * Creates a new Game instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Game(int size, int noOfLadders, int noOfSnakes, int noOfDice) {
         this.noOfSnakes = noOfSnakes;
         this.noOfLadders = noOfLadders;
@@ -31,11 +35,19 @@ public class Game {
         initBoardObstacles();
     }
 
+    /**
+     * Handles init board obstacles for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private void initBoardObstacles() {
         generateObstacles(noOfSnakes, ObstacleType.SNAKE);
         generateObstacles(noOfLadders, ObstacleType.LADDER);
     }
 
+    /**
+     * Handles generate obstacles for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private void generateObstacles(int count, ObstacleType type) {
         Random random = new Random();
         int size = board.getSize();
@@ -51,10 +63,18 @@ public class Game {
         }
     }
 
+    /**
+     * Handles add player for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addPlayer(Player player) {
         players.add(player);
     }
 
+    /**
+     * Handles start game for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void startGame() {
         board.printBoard(players);
 

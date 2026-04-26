@@ -12,6 +12,10 @@ public class Booking {
     private final UUID doctorId;
     private final String slot;
 
+    /**
+     * Creates a new Booking instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Booking(UUID patientId, UUID doctorId, String slot) {
         this.id = UUID.randomUUID();
         this.patientId = patientId;

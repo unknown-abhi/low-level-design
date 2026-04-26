@@ -8,6 +8,10 @@ import com.lld.splitwise.service.*;
 import java.util.*;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
 
         // users

@@ -6,6 +6,10 @@ import com.lld.atm.state.*;
 
 public class ATMStateFactory {
 
+    /**
+     * Handles get state for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static ATMState getState(ATMStatus status, ATMMachine machine) {
         return switch (status) {
             case IDLE -> new IdleState(machine);

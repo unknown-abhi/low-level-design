@@ -6,6 +6,10 @@ import com.lld.snakes_and_ladder.service.Game;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

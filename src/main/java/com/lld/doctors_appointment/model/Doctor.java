@@ -19,6 +19,10 @@ public class Doctor {
     @Setter
     private double rating;
 
+    /**
+     * Creates a new Doctor instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Doctor(String name, Specialization specialization, double rating) {
         this.id = UUID.randomUUID();
         this.name = name;

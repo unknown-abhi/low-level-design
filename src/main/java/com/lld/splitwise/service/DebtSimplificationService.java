@@ -8,6 +8,10 @@ import java.util.*;
 
 public class DebtSimplificationService {
 
+    /**
+     * Handles simplify debts for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void simplifyDebts(Group group) {
         List<User> users = new ArrayList<>(group.getMembers());
         Map<User, BalanceSheet> sheets = group.getBalanceSheets();

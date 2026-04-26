@@ -21,14 +21,26 @@ public class ParkingSpot {
     // _ true
     // false
 
+    /**
+     * Handles try occupy for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean tryOccupy() {
         return occupied.compareAndSet(false, true);
     }
 
+    /**
+     * Handles vacate for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void vacate() {
         occupied.set(false);
     }
 
+    /**
+     * Handles is occupied for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean isOccupied() {
         return occupied.get();
     }

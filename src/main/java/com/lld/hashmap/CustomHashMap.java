@@ -37,11 +37,19 @@ public class CustomHashMap<K, V> {
         }
     }
 
+    /**
+     * Returns the get requested by the caller.
+     * It reads the current state and exposes the value without changing behavior.
+     */
     public V get(K key) {
         Node node = findNode(key);
         return node == null ? null : (V) node.val;
     }
 
+    /**
+     * Handles put for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void put(K key, V val) {
         Node node = findNode(key);
         if (node != null) {
@@ -66,6 +74,10 @@ public class CustomHashMap<K, V> {
         }
     }
 
+    /**
+     * Removes the remove from the current aggregate.
+     * It updates tracked state so the item is no longer considered later.
+     */
     public void remove(K key) {
         Node nodeToRemove = findNode(key);
 
@@ -81,10 +93,18 @@ public class CustomHashMap<K, V> {
         countOfNodes--;
     }
 
+    /**
+     * Handles get size for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public int getSize() {
         return countOfNodes;
     }
 
+    /**
+     * Handles rehash for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private void rehash(int newSize) {
         if (newSize > MAX_CAPACITY) {
             System.out.println("Hashmap is exceeding max capacity");
@@ -125,6 +145,10 @@ public class CustomHashMap<K, V> {
         map = newMap;
     }
 
+    /**
+     * Handles find node for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Node findNode(K key) {
         int bucket = key.hashCode() % map.length;
         Node head = map[bucket];

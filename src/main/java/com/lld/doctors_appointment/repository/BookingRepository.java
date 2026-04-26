@@ -13,18 +13,34 @@ public class BookingRepository {
     // id-starttime
     // 123-9:30
 
+    /**
+     * Saves the save into the backing store.
+     * It updates repository state so later operations can retrieve the same data.
+     */
     public void save(Booking booking) {
         bookingMap.put(booking.getId(), booking);
     }
 
+    /**
+     * Handles delete for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void delete(Booking booking) {
         bookingMap.remove(booking.getId());
     }
 
+    /**
+     * Handles get booking by id for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Booking getBookingById(UUID id) {
         return bookingMap.get(id);
     }
 
+    /**
+     * Handles find by doctor for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Booking> findByDoctor(UUID doctorId) {
         List<Booking> res = new ArrayList<>();
         for (Booking b : bookingMap.values()) {
@@ -34,6 +50,10 @@ public class BookingRepository {
         return res;
     }
 
+    /**
+     * Handles find by patient for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Booking> findByPatient(UUID patientId) {
         List<Booking> res = new ArrayList<>();
         for (Booking b : bookingMap.values()) {
@@ -43,11 +63,19 @@ public class BookingRepository {
         return res;
     }
 
+    /**
+     * Handles add to waitlist for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addToWaitlist(String doctorSlotKey, UUID patientId) {
         waitlist.putIfAbsent(doctorSlotKey, new LinkedList<>());
         waitlist.get(doctorSlotKey).offer(patientId);
     }
 
+    /**
+     * Handles pop from waitlist for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public UUID popFromWaitlist(String doctorSlotKey) {
         Queue<UUID> queue = waitlist.get(doctorSlotKey);
         return (queue != null) ? queue.poll() : null;

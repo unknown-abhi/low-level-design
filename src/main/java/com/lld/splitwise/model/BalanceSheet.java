@@ -11,24 +11,44 @@ public class BalanceSheet {
     private double totalExpense = 0.0;
     private final Map<User, Double> balances = new HashMap<>();
 
+    /**
+     * Handles add total paid for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addTotalPaid(double amount) {
         this.totalPaid += amount;
     }
 
+    /**
+     * Handles add total expense for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addTotalExpense(double amount) {
         this.totalExpense += amount;
     }
 
+    /**
+     * Handles add balance for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void addBalance(User other, double amount) {
         balances.put(other, balances.getOrDefault(other, 0.0) + amount);
         if (Math.abs(balances.get(other)) < 1e-6)
             balances.remove(other);
     }
 
+    /**
+     * Handles clear balances for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void clearBalances() {
         balances.clear();
     }
 
+    /**
+     * Prints the print for visibility.
+     * It formats the current state and writes it to the configured output.
+     */
     public void print(User me) {
         double youOwe = 0.0, youGetBack = 0.0;
         for (double amount : balances.values()) {

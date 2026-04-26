@@ -19,6 +19,10 @@ public class ATM {
     @Setter
     private int oneHundredCount;
 
+    /**
+     * Creates a new ATM instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public ATM(String id, int twoThousandCount, int fiveHundredCount, int oneHundredCount) {
         this.id = id;
         this.cashAvailable = 2000 * twoThousandCount + 500 * fiveHundredCount + 100 * oneHundredCount;

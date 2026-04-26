@@ -7,6 +7,10 @@ import com.lld.atm.repository.ATMRepository;
 import com.lld.atm.service.ATMMachine;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         Card card = new Card(
                 "CARD123",

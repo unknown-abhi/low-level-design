@@ -7,10 +7,18 @@ import com.lld.parking_lot.strategy.payment.PaymentStrategy;
 public class PaymentProcessor {
     private final PaymentStrategy strategy;
 
+    /**
+     * Creates a new PaymentProcessor instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public PaymentProcessor(PaymentStrategy strategy) {
         this.strategy = strategy;
     }
 
+    /**
+     * Pays for the pay using the selected strategy.
+     * It delegates payment handling and updates the resulting status.
+     */
     public boolean pay(Ticket ticket, double amount) {
         boolean success = strategy.processPayment(ticket, amount);
         if (success) {

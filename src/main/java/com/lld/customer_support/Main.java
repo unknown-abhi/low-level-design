@@ -18,6 +18,10 @@ import java.util.Map;
 import java.util.*;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         AgentRepository agentRepository = new AgentRepository();
         IssueRepository issueRepository = new IssueRepository();

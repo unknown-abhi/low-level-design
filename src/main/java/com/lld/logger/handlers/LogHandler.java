@@ -13,16 +13,28 @@ public abstract class LogHandler {
     protected LogHandler next;
     protected final List<LogAppender> appenders = new CopyOnWriteArrayList<>();
 
+    /**
+     * Subscribes the subscribe to this publisher.
+     * It records the observer so future events are delivered to it.
+     */
     public void subscribe(LogAppender observer) {
         appenders.add(observer);
     }
 
+    /**
+     * Handles notify observers for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void notifyObservers(LogMessage message) {
         for (LogAppender appender : appenders) {
             appender.append(message);
         }
     }
 
+    /**
+     * Handles the handle at this stage of the pipeline.
+     * It performs its check and either finishes the work or passes control onward.
+     */
     public void handle(LogMessage message) {
         if (canHandle(message.getLevel())) {
             notifyObservers(message);
@@ -31,6 +43,10 @@ public abstract class LogHandler {
         }
     }
 
+    /**
+     * Handles can handle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     protected abstract boolean canHandle(LogLevel level);
 }
 

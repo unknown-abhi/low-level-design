@@ -14,6 +14,10 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public class Main {
+    /**
+     * Creates a new Main instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public static void main(String[] args) {
         BranchRepository branchRepo = new BranchRepository();
         BookingRepository bookingRepo = new BookingRepository();

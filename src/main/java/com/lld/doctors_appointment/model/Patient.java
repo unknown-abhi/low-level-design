@@ -14,6 +14,10 @@ public class Patient {
     @Setter
     private String name;
 
+    /**
+     * Creates a new Patient instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Patient(String name) {
         this.id = UUID.randomUUID();
         this.name = name;

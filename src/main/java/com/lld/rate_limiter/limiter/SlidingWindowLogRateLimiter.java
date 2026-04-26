@@ -12,11 +12,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SlidingWindowLogRateLimiter extends RateLimiter {
     private final Map<String, Queue<Long>> requestLog = new ConcurrentHashMap<>();
 
+    /**
+     * Creates a new SlidingWindowLogRateLimiter instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public SlidingWindowLogRateLimiter(RateLimitConfig config) {
         super(config, RateLimitType.SLIDING_WINDOW_LOG);
     }
 
     @Override
+    /**
+     * Handles allow request for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean allowRequest(String userId) {
         AtomicBoolean allowed = new AtomicBoolean(false);
         long now = System.currentTimeMillis() / 1000;

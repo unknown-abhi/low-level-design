@@ -22,6 +22,10 @@ public class IssueService {
     private final IssueRepository issueRepository;
     private final AgentRepository agentRepository;
 
+    /**
+     * Handles create issue for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Issue createIssue(String transactionId, IssueType issueType, String subject, String description,
             String email) {
         Issue issue = new Issue(transactionId, issueType, subject, description, email);
@@ -33,6 +37,10 @@ public class IssueService {
     // {"email": "testUser2@test.com"}
     // {"type": "Payment Related"}
     // {"status": "open"}
+    /**
+     * Handles get issues for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public List<Issue> getIssues(Map<String, String> filter) {
         return issueRepository.getAll().stream().filter(issue -> {
             if (filter.containsKey("email") && !issue.getEmail().equalsIgnoreCase(filter.get("email"))) {
@@ -49,6 +57,10 @@ public class IssueService {
         }).toList();
     }
 
+    /**
+     * Handles update issue for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void updateIssue(String issueId, IssueStatus status, String resolution) {
         Issue issue = issueRepository.getById(issueId);
         if (issue == null)
@@ -58,6 +70,10 @@ public class IssueService {
         System.out.println(">>> " + issueId + " status updated to " + issue.getStatus());
     }
 
+    /**
+     * Handles resolve issue for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void resolveIssue(String issueId, String resolution) {
         Issue issue = issueRepository.getById(issueId);
         if (issue == null)

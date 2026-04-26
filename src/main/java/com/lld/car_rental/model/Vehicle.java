@@ -18,6 +18,10 @@ public abstract class Vehicle {
 
     private final AtomicBoolean isBooked = new AtomicBoolean(false);
 
+    /**
+     * Creates a new Vehicle instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public Vehicle(String licensePlate, double pricePerHour, double pricePerKm, VehicleType type) {
         this.licensePlate = licensePlate;
         this.status = VehicleStatus.AVAILABLE;
@@ -26,6 +30,10 @@ public abstract class Vehicle {
         this.type = type;
     }
 
+    /**
+     * Handles increment booking count for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void incrementBookingCount() {
         this.bookingCount++;
     }

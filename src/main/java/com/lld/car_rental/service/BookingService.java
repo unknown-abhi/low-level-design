@@ -24,6 +24,10 @@ public class BookingService {
     @Setter
     private PricingStrategy pricingStrategy;
 
+    /**
+     * Creates a new BookingService instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     private BookingService(BranchRepository branchRepo,
             BookingRepository bookingRepo,
             BookingStrategy bookingStrategy,
@@ -34,6 +38,10 @@ public class BookingService {
         this.pricingStrategy = pricingStrategy;
     }
 
+    /**
+     * Handles get instance for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static BookingService getInstance(BranchRepository branchRepo,
             BookingRepository bookingRepo,
             BookingStrategy bookingStrategy,
@@ -48,6 +56,10 @@ public class BookingService {
         return instance;
     }
 
+    /**
+     * Handles book vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public Optional<Booking> bookVehicle(String branchId,
             VehicleType vehicleType,
             LocalDateTime start,
@@ -115,6 +127,10 @@ public class BookingService {
         return Optional.of(booking);
     }
 
+    /**
+     * Handles return vehicle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void returnVehicle(String bookingId) {
         Optional<Booking> bookingOpt = bookingRepo.getBookingById(bookingId);
         if (bookingOpt.isEmpty()) {

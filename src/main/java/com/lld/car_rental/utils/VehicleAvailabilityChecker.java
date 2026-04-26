@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class VehicleAvailabilityChecker {
+    /**
+     * Handles is available for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static boolean isAvailable(List<Booking> bookings, LocalDateTime start, LocalDateTime end) {
         List<Booking> activeBookings = bookings.stream()
                 .filter(b -> b.getStatus() == BookingStatus.CREATED || b.getStatus() == BookingStatus.CONFIRMED)

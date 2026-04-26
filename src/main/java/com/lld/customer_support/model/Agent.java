@@ -21,6 +21,10 @@ public class Agent {
     private final Queue<String> waitList = new LinkedList<>();
     private final List<String> history = new ArrayList<>();
 
+    /**
+     * Handles is available for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean isAvailable() {
         return assignedIssueId == null;
     }

@@ -6,6 +6,10 @@ import com.lld.snakes_and_ladder.model.Snake;
 import com.lld.snakes_and_ladder.enums.ObstacleType;
 
 public class ObstacleFactory {
+    /**
+     * Handles create obstacle for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public static Obstacle createObstacle(ObstacleType type, int up, int down) {
         return switch (type) {
             case SNAKE -> new Snake(up, down);

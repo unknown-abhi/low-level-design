@@ -12,6 +12,10 @@ public class TokenBucketRateLimiter extends RateLimiter {
     private final Map<String, Integer> tokens = new ConcurrentHashMap<>();
     private final Map<String, Long> lastRefillTime = new HashMap<>();
 
+    /**
+     * Creates a new TokenBucketRateLimiter instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public TokenBucketRateLimiter(RateLimitConfig config) {
         super(config, RateLimitType.TOKEN_BUCKET);
     }
@@ -20,6 +24,10 @@ public class TokenBucketRateLimiter extends RateLimiter {
     // user1 and user1
 
     @Override
+    /**
+     * Handles allow request for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public boolean allowRequest(String userId) {
         AtomicBoolean allowed = new AtomicBoolean(false);
         long now = System.currentTimeMillis();
@@ -40,6 +48,10 @@ public class TokenBucketRateLimiter extends RateLimiter {
 
     // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
     // free user refill rate = 60 / 10 = 6
+    /**
+     * Handles refill tokens for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     private int refillTokens(String userId, long now) {
         double refillRate = (double) config.getWindowInSeconds() / config.getMaxRequests();
 

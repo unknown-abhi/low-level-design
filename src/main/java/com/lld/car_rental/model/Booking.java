@@ -26,6 +26,10 @@ public class Booking {
     private double amount;
 
     @Override
+    /**
+     * Handles to string for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM h:mm a yyyy", Locale.ENGLISH);
         return "\n" +

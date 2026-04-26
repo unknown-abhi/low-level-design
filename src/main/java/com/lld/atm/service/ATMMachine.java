@@ -16,6 +16,10 @@ public class ATMMachine {
     @Setter
     private Card currentCard;
 
+    /**
+     * Creates a new ATMMachine instance.
+     * This constructor wires the initial dependencies and starting state for the object.
+     */
     public ATMMachine(String atmId, ATMRepository atmRepository) {
         this.atmRepository = atmRepository;
         this.atm = atmRepository.getById(atmId)
@@ -23,26 +27,50 @@ public class ATMMachine {
         this.state = ATMStateFactory.getState(atm.getStatus(), this);
     }
 
+    /**
+     * Handles insert card for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void insertCard(Card card) {
         state.insertCard(card);
     }
 
+    /**
+     * Handles enter pin for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void enterPin(String pin) {
         state.enterPin(pin);
     }
 
+    /**
+     * Handles select option for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void selectOption(String option) {
         state.selectOption(option);
     }
 
+    /**
+     * Handles dispense cash for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void dispenseCash(int amount) {
         state.dispenseCash(amount);
     }
 
+    /**
+     * Handles eject card for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void ejectCard() {
         state.ejectCard();
     }
 
+    /**
+     * Handles set state for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public void setState(ATMState state) {
         this.state = state;
         this.atm.setStatus(state.getStatus());

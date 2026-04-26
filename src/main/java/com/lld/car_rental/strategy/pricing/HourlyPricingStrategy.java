@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 
 public class HourlyPricingStrategy implements PricingStrategy {
     @Override
+    /**
+     * Handles calculate price for this class.
+     * It applies the class-specific rules and updates any related state or result.
+     */
     public double calculatePrice(Vehicle vehicle, LocalDateTime start, LocalDateTime end, double distanceKm) {
         long minutes = Duration.between(start, end).toMinutes();
         long hours = (long) Math.ceil(minutes / 60.0);
