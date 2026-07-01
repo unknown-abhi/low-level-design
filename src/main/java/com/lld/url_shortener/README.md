@@ -37,13 +37,18 @@ url_shortener/
 - `UrlShortenerService`: creates short URLs, resolves redirects, disables links.
 - `AnalyticsService`: records and reads click events.
 - `ShortCodeGenerator`: interface for generating short codes.
-- `Base62RandomShortCodeGenerator`: default random base62 code generator.
+- `Base62RandomShortCodeGenerator`: random base62 code generator.
+- `Base62CounterShortCodeGenerator`: gets a globally unique counter value and encodes it as base62.
+- `DistributedCounter`: abstraction for a Redis/ZooKeeper/database-backed sequence generator.
 
 ## Flow
 
 ```text
 Create URL
 Client -> UrlShortenerService -> UrlValidator -> ShortCodeGenerator -> UrlRepository
+
+With distributed counter strategy:
+Client -> UrlShortenerService -> DistributedCounter -> Base62 encoding -> UrlRepository
 
 Redirect
 Client -> UrlShortenerService -> UrlRepository -> AnalyticsService -> Original URL
@@ -68,6 +73,7 @@ String originalUrl = urlShortenerService.redirect(
 - Add custom aliases.
 - Add user-level quotas.
 - Add distributed ID generation.
+- Replace `InMemoryDistributedCounter` with Redis `INCR`, ZooKeeper sequence nodes, database sequence, or Snowflake-style ID service.
 - Add cache for hot links.
 - Add sharded storage for high scale.
 - Add rate limiting and abuse detection.

@@ -5,7 +5,8 @@ import com.lld.url_shortener.repository.ClickEventRepository;
 import com.lld.url_shortener.repository.UrlRepository;
 import com.lld.url_shortener.service.AnalyticsService;
 import com.lld.url_shortener.service.UrlShortenerService;
-import com.lld.url_shortener.strategy.Base62RandomShortCodeGenerator;
+import com.lld.url_shortener.strategy.Base62CounterShortCodeGenerator;
+import com.lld.url_shortener.strategy.InMemoryDistributedCounter;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +20,7 @@ public class Main {
                 "https://sho.rt",
                 urlRepository,
                 analyticsService,
-                new Base62RandomShortCodeGenerator());
+                new Base62CounterShortCodeGenerator(new InMemoryDistributedCounter()));
 
         ShortUrl shortUrl = urlShortenerService.createShortUrl(
                 "https://example.com/products/123?source=newsletter",
