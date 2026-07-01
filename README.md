@@ -22,6 +22,7 @@ src/main/java/com/lld/
 ├── rate_limiter/             # Rate Limiter Implementation
 ├── snakes_and_ladder/        # Snakes and Ladders Game
 ├── splitwise/                # Splitwise Bill Sharing Application
+├── url_shortener/            # URL Shortener System
 └── Main.java                 # Entry point
 ```
 
@@ -76,6 +77,11 @@ src/main/java/com/lld/
 - Bill splitting and expense sharing application
 - Features: Split bills, group expenses, settlement calculation
 - Concepts: Graph algorithms, debt settlement
+
+### 11. **URL Shortener** (`url_shortener/`)
+- Short URL creation and redirect management
+- Features: expiry, disable flow, click analytics
+- Design patterns: Strategy, Repository, Service Layer
 
 ## 🚀 Getting Started
 
