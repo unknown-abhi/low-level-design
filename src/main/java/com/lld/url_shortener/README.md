@@ -39,6 +39,7 @@ url_shortener/
 - `ShortCodeGenerator`: interface for generating short codes.
 - `Base62RandomShortCodeGenerator`: random base62 code generator.
 - `Base62CounterShortCodeGenerator`: gets a globally unique counter value and encodes it as base62.
+- `SqidsCounterShortCodeGenerator`: gets a globally unique counter value and encodes it with Sqids.
 - `DistributedCounter`: abstraction for a Redis/ZooKeeper/database-backed sequence generator.
 
 ## Flow
@@ -48,7 +49,7 @@ Create URL
 Client -> UrlShortenerService -> UrlValidator -> ShortCodeGenerator -> UrlRepository
 
 With distributed counter strategy:
-Client -> UrlShortenerService -> DistributedCounter -> Base62 encoding -> UrlRepository
+Client -> UrlShortenerService -> DistributedCounter -> Base62/Sqids encoding -> UrlRepository
 
 Redirect
 Client -> UrlShortenerService -> UrlRepository -> AnalyticsService -> Original URL
@@ -74,6 +75,8 @@ String originalUrl = urlShortenerService.redirect(
 - Add user-level quotas.
 - Add distributed ID generation.
 - Replace `InMemoryDistributedCounter` with Redis `INCR`, ZooKeeper sequence nodes, database sequence, or Snowflake-style ID service.
+- Use `Base62CounterShortCodeGenerator` when you want a tiny dependency-free encoder.
+- Sqids is for URL-safe visual IDs, not encryption. Keep the original URL lookup in storage.
 - Add cache for hot links.
 - Add sharded storage for high scale.
 - Add rate limiting and abuse detection.
